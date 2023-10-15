@@ -74,10 +74,10 @@ Dio_PortLevelType Dio_ReadPort(Dio_PortType PortId)
 void Dio_WritePort(Dio_PortType PortId,Dio_PortLevelType Level)
 {
     /*Get the Index of the output data using the pins with output direction*/
-    uint32_t Local_OutputSets=(uint32_t)(((uint8_t)(GPIO_Arr[PortId]->DIR))<<2U);
+    uint8_t Local_OutputSets=(uint8_t)(GPIO_Arr[PortId]->DIR));
     if(PortId<DIO_PORT_NUM)
     {
-        GPIO_Arr[PortId]->DATA[DIO_PORT_RW]=(uint32_t)Level;
+        GPIO_Arr[PortId]->DATA[Local_OutputSets]=(uint32_t)Level;
     }
     else
     {
